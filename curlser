@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+_term() {
+  >&2 echo "TERM"
+  exit 0
+}
+
+session_id=${1:-}
+args=${@:2}
+
+cookie_jar="/tmp/curlser-$session_id"
+
+if [ -f "$cookie_jar" ]; then
+  curl --silent -L -b "$cookie_jar" "$args"
+else
+  curl --silent -L --cookie-jar "$cookie_jar" "$args"
+fi
