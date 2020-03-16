@@ -10,7 +10,7 @@ Makes curl to behave like a browser
 
 ## usage
 
-Cookies are set and set back:
+Cookies are set and sent back:
 
     $ curlser mysession example.com
     $ curlser mysession example.com
